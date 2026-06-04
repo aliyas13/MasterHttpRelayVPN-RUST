@@ -21,8 +21,11 @@ jobs:
       - name: Build with cross
         run: cross build --release --target armv7-unknown-linux-musleabihf
 
-      - name: Upload artifact
+      - name: List built files
+        run: ls -lah target/armv7-unknown-linux-musleabihf/release/
+
+      - name: Upload artifact (all binaries)
         uses: actions/upload-artifact@v4
         with:
           name: mhrv-armv7-openwrt
-          path: target/armv7-unknown-linux-musleabihf/release/mhrv
+          path: target/armv7-unknown-linux-musleabihf/release/mhrv*
