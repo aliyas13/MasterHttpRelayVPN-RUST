@@ -15,8 +15,11 @@ jobs:
         with:
           targets: armv7-unknown-linux-musleabihf
 
-      - name: Build
-        run: cargo build --release --target armv7-unknown-linux-musleabihf
+      - name: Install cross
+        run: cargo install cross --debug
+
+      - name: Build with cross
+        run: cross build --release --target armv7-unknown-linux-musleabihf
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
